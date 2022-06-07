@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {createTheme, ThemeProvider} from '@mui/material'
+
+import { Route, Switch,Redirect } from 'react-router-dom';
+import Products from './pages/Products'
+import CreateProduct from './pages/CreateProduct'
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+       'Quicksand', 'sans-serif',
+    ].join(','),
+  },
+});
+
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme} >
+      <div className="App">
+       
+        <Switch >
+            
+            <Route path="/products" render={() => <Products />} />
+            <Route path='/add_product'
+            render={() => <CreateProduct />}
+            />
+            
+            <Redirect to='/products' />
+            
+          </Switch>
+
+      </div>
+    </ThemeProvider>
+    
   );
 }
+
+
+
 
 export default App;
