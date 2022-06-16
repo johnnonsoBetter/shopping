@@ -21,12 +21,14 @@ function App() {
        
         <Switch >
             
-            <Route path="/products" render={() => <Products />} />
+          
             <Route path='/add_product'
             render={() => <CreateProduct />}
             />
             
-            <Redirect to='/products' />
+              <Route path="/" render={() => <Products />} />
+            
+            <Redirect to='/' />
             
           </Switch>
 
